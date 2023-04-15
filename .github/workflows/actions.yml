@@ -2,8 +2,7 @@ name : run-python-file
 
 on :
   schedule:
-    - cron: '* * * * *'
-  workflow_dispatch:
+    - cron: '* * * * *' # “At every 60th minute past every 2nd hour.”
 
 jobs:
   build:
