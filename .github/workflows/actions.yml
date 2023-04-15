@@ -2,14 +2,14 @@ name: run main.py
 
 on:
   schedule:
-    - cron: '*/60 */2 * * *' # “At every 60th minute past every 2nd hour.”
+    - cron: '0 */2 * * *' # “At every 60th minute past every 2nd hour.”
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo content
-        uses: actions/checkout@v2 # checkout the repository content
+        uses:  actions/checkout@v2 # checkout the repository content
 
       - name: setup python
         uses: actions/setup-python@v4
