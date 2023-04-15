@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 
 load_dotenv(".env")
 
+# NUMBER = os.environ["number"]
+
 keyboard = Controller()
 
 
