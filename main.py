@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv(".env")
 
-# NUMBER = os.environ["number"]
+Number = os.environ.get["NUMBER"]
 
 keyboard = Controller()
 
@@ -87,7 +87,7 @@ def info():
 
         # print(os.getenv('number'))
         
-        send_whatsapp_message(os.getenv('number'),msg)
+        send_whatsapp_message(Number,msg)
         with open("save.txt", "w") as f:
             f.writelines(link)
             # last_link.append(link)
