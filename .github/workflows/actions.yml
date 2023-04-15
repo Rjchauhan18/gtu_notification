@@ -27,5 +27,5 @@ jobs:
 
         env:
           NUMBER : ${{secrets.NUMBER}}
-        run: python main.py
+        run: DISPLAY=:0 python main.py
       
