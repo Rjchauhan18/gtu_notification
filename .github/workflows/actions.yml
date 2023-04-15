@@ -2,7 +2,7 @@ name : run-python-file
 
 on :
   schedule:
-    - cron: '* * * * *' # “At every 60th minute past every 2nd hour.”
+    - cron: '*/60 */2 * * *' # “At every 60th minute past every 2nd hour.”
   workflow_dispatch:
 
 permissions:
