@@ -14,6 +14,7 @@ Number = os.environ.get["NUMBER"]
 keyboard = Controller()
 
 
+os.environ['DISPLAY'] = ':0'
 
 
 def send_whatsapp_message(number:int,msg: str):
