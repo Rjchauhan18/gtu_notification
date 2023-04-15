@@ -122,7 +122,7 @@ celerybeat.pid
 
 # SageMath parsed files
 *.sage.py
-config.py
+PyWhatKit_DB.txt
 
 # Environments
 .env
