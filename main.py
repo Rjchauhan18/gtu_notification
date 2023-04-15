@@ -91,6 +91,8 @@ def info():
         with open("save.txt", "w") as f:
             f.writelines(link)
             # last_link.append(link)
+    else:
+        print("No latest notification")
 
 
 
