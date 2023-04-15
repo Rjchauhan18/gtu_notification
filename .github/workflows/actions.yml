@@ -3,6 +3,7 @@ name: run main.py
 on:
   schedule:
     - cron: '* * * * *' # “At every 60th minute past every 2nd hour.”
+  workflow_dispatch:
 
 jobs:
   build:
