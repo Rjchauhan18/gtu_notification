@@ -4,6 +4,10 @@ on :
   schedule:
     - cron: '* * * * *' # “At every 60th minute past every 2nd hour.”
 
+permissions:
+  id-token: write
+  contents: read # default
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,6 +17,8 @@ jobs:
         with:
           python-version: 3.x
       - name : run gtu notification
+
         env:
           NUMBER : ${{secrets.NUMBER}}
         run: python main.py
+      
