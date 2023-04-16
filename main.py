@@ -61,6 +61,8 @@ def info():
     link= link_tag.get('href')
 
     
+    # last_link =last_notification()
+    # print(last_notification[0])
     print(link)
     # saved = "rahul"
     if recorded != link:
