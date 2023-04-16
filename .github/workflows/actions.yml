@@ -11,6 +11,16 @@ permissions:
   contents: read # default
 
 jobs:
+  services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: Rjchauhan@18
+          MYSQL_DATABASE: bank
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+ 
   build:
     runs-on: ubuntu-latest
     steps:
