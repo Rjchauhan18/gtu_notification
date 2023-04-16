@@ -1,4 +1,5 @@
 beautifulsoup4 == 4.12.2  
 requests == 2.28.2
 secure-smtplib == 0.1.1
-mysql-connector-python == 8.0.32
+pickle5 ==0.0.12
+# email-to== 0.1.0
