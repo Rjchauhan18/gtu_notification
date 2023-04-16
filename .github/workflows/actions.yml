@@ -2,7 +2,7 @@ name : run-python-file
 
 on :
   schedule:
-    - cron: '0 0 * * *' # “At   */60 */2 * * *every 60th minute past every 2nd hour.”
+    - cron: '0 */2 * * *' # “At   */60 */2 * * *every 60th minute past every 2nd hour.”
   workflow_dispatch:
 
 permissions:
@@ -13,6 +13,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: mirromutth/mysql-action@v1.1
+        with:
+          host port: 3800 # Optional, default value is 3306. The port of host
+          container port: 3307 # Optional, default value is 3306. The port of container
+          character set server: 'utf8' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
+          collation server: 'utf8_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
+          mysql version: '8.0' # Optional, default value is "latest". The version of the MySQL
+          mysql database: 'some_test' # Optional, default value is "test". The specified database which will be create
+          mysql root password: ${{ secrets.RootPassword }} # Required if "mysql user" is empty, default is empty. The root superuser password
+          mysql user: 'developer' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
+          mysql password: ${{ secrets.DatabasePassword }} # Required if "mysql user" exists. The password for the "mysql user"
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Set up python

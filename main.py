@@ -1,15 +1,14 @@
 import os
 from bs4 import BeautifulSoup 
 import requests
-import time 
 import smtplib
-
+from db import insert_notification,last_notification
 # smtp connection
 
 server = smtplib.SMTP('smtp.gmail.com',587)
 server.starttls()
 sender_email = os.environ.get('SMTP_SENDER_EMAIL')
-smtp_password =  os.environ.get('SMTP_PASSWORD')
+smtp_password = os.environ.get('SMTP_PASSWORD')
 receiver_email =  os.environ.get('SMTP_RECEIVER_EMAIL')
 
 server.login(sender_email,smtp_password)
@@ -26,8 +25,8 @@ h3_tag=html.find("h3",{"class":"d-block"})
 
 # title and link of the content
 
-with open("save.txt", "r") as f:
-    last_notification = f.readlines()
+# with open("save.txt", "r") as f:
+#     last_notification = f.readlines()
 
 
 def info():
@@ -37,15 +36,20 @@ def info():
     link_tag=h3_tag.find("a",{"target" :"_blank"},href=True)
     link= link_tag.get('href')
 
-    if last_notification[0] != link:
+    
+    last_link =last_notification()
+
+    if last_link != link:
         try:
             msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
             server.sendmail(sender_email,receiver_email,msg)
         except Exception as e:
             print(e)
+        
+        insert_notification(link_tag.text,link)
 
-        with open("save.txt", "w") as f:
-            f.writelines(link)
+        # with open("save.txt", "w") as f:
+        #     f.writelines(link)
     else:
         print("No latest notification")
 
