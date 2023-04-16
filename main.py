@@ -38,7 +38,7 @@ def info():
 
     
     # last_link =last_notification()
-    print(last_notification[0])
+    # print(last_notification[0])
     print(link)
 
     if last_notification[0] != link:
