@@ -50,6 +50,10 @@ def info():
 
         # with open("save.txt", "w") as f:
         #     f.writelines(link)
+
+        # with open("save.txt", "w") as f:
+        #     f.writelines(link)
+        #     print("Successfully written in save.txt file")
     else:
         print("No latest notification")
 
