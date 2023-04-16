@@ -7,9 +7,9 @@ import smtplib
 
 server = smtplib.SMTP('smtp.gmail.com',587)
 server.starttls()
-sender_email =os.environ.get('SMTP_SENDER_EMAIL')
-smtp_password =os.environ.get('SMTP_PASSWORD')
-receiver_email = os.environ.get('SMTP_RECEIVER_EMAIL')
+sender_email =os.environ.get('SMTP_SENDER_EMAIL')#sender email
+smtp_password =os.environ.get('SMTP_PASSWORD')# app generated password
+receiver_email = os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
 
 server.login(sender_email,smtp_password)
 print("successful connected")
