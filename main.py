@@ -38,6 +38,7 @@ def info():
 
     
     # last_link =last_notification()
+    print(last_notification[0])
 
     if last_notification[0] != link:
         try:
