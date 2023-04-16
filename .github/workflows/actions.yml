@@ -15,10 +15,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      User: root
-      Password: Rjchauhan@18
-      # MySQL service is disabled by default.
-      run: 'sudo systemctl start mysql.service'
+      - name : Mysql enable
+      with:
+        User: root
+        Password: Rjchauhan@18
+        # MySQL service is disabled by default.
+        run: 'sudo systemctl start mysql.service'
       # - uses: mirromutth/mysql-action@v1.1
       #   with:
       #     host port: 3800 # Optional, default value is 3306. The port of host
