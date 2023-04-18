@@ -57,11 +57,11 @@ h3_tag=html.find("h3",{"class":"d-block"})
 
 #memory of code 
 
-reading_file = open("save.txt", "r")
+# reading_file = open("save.txt", "r")
 
-t=reading_file.read()
+# t=reading_file.read()
 
-print(t)
+# print(t)
 
 class Record:
 
@@ -84,7 +84,7 @@ def info():
 
     
     print("Current Link :"+link)
-    if t != link:
+    if recorded != link:
         try:
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
             sendemail(dt,link_tag.text,link)
@@ -94,8 +94,7 @@ def info():
             
             writitng_file.write(link)
             with open("Record", 'wb') as f:
-                curr = link
-                pickle.dump(curr, f)
+                pickle.dump(link, f)
                 print("link is Successfully added to code memory")
            
         except Exception as e:
