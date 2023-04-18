@@ -61,6 +61,8 @@ jobs:
           MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
           MYSQL_USER: ${{ secrets.MYSQL_USER }}
           MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+        run: |
+          mysql -h $MYSQL_HOST -u $MYSQL_USER 
           
 
       - name : run gtu notification
