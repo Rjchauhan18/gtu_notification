@@ -50,6 +50,21 @@ jobs:
         with:
           name: saving to txt
           path: save.txt
+      
+      - name: Set up MySQL
+        run: |
+          sudo apt-get update
+          sudo apt-get install mysql-client
+          
+      - name: Execute SQL
+        env:
+          MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+          MYSQL_USER: ${{ secrets.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+        run: |
+          mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE -e "SELECT * FROM mytable;"
+          
 
       - name : run gtu notification
         env:
