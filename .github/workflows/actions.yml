@@ -40,7 +40,7 @@ jobs:
           mysql user: ${{ secrets.MYSQL_USER }} # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
           mysql password: ${{ secrets.MYSQL_PASSWORD }} # Required if "mysql user" exists. The password for the "mysql user"
 
-      - name: Checkout code
+      # - name: Checkout code
       - uses: actions/checkout@v3
       - name : SHOW DATABASES
         run : mysql -h $${{ secrets.MYSQL_HOST }} --port 3306 -u${{ secrets.MYSQL_USER }} -p${{ secrets.MYSQL_PASSWORD }} -e "Show databases";
