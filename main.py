@@ -6,6 +6,34 @@ import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import mysql.connector
+
+
+
+# Get MySQL credentials from environment variables
+MYSQL_HOST = os.environ['MYSQL_HOST']
+MYSQL_USER = os.environ['MYSQL_USER']
+MYSQL_PASSWORD = os.environ['MYSQL_PASSWORD']
+MYSQL_DATABASE = os.environ['MYSQL_DATABASE']
+
+# Connect to the MySQL database
+cnx = mysql.connector.connect(
+  host=MYSQL_HOST,
+  user=MYSQL_USER,
+  password=MYSQL_PASSWORD,
+  database=MYSQL_DATABASE
+)
+
+# Create a cursor object to execute SQL queries
+cursor = cnx.cursor()
+
+# Execute a SELECT query
+query = "SELECT * FROM gtu_notofication"
+cursor.execute(query)
+
+# Fetch the results and print them
+for result in cursor.fetchall():
+  print(result)
 
 # smtp connection
 def sendemail(date,Notification, link):
