@@ -11,9 +11,9 @@ from email.mime.text import MIMEText
 def sendemail(date,Notification, link):
   # Define email addresses to use
     
-    sender_email = 'targetearn2022@gmail.com'#os.environ.get('SMTP_SENDER_EMAIL')#sender email
-    smtp_pass = 'lpspjhhaxqhbxxvu' #os.environ.get('SMTP_PASSWORD')# app generated password
-    receiver_email = 'rjchauhan5000000@gmail.com' #os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
+    sender_email =os.environ.get('SMTP_SENDER_EMAIL')#sender email
+    smtp_pass = os.environ.get('SMTP_PASSWORD')# app generated password
+    receiver_email = os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
 
 
     # Define SMTP email server details
