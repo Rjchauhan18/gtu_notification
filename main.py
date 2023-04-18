@@ -14,9 +14,6 @@ import mysql.connector
 MYSQL_HOST = os.environ.get('MYSQL_HOST')
 MYSQL_USER = os.environ.get('MYSQL_USER')
 MYSQL_PASSWORD = os.environ.get('MYSQL_PASSWORD')
-print(MYSQL_HOST)
-print(MYSQL_USER)
-print(MYSQL_PASSWORD)
 # Connect to the MySQL database
 # cnx = mysql.connector.connect(
 #   host='127.0.0.1',
