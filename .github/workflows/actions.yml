@@ -14,12 +14,26 @@ permissions:
   id-token: write
   contents: read # default
 
+  
 env:
   MYSQL_USER: ${{ secrets.MYSQL_USER }}
   MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
   MYSQL_HOST: 127.0.0.1
   MYSQL_PORT: 3306
   MYSQL_DATABASE: bank
+steps:
+- uses: mirromutth/mysql-action@v1.1
+  with:
+    host port: 3306 # Optional, default value is 3306. The port of host
+    container port: 3307 # Optional, default value is 3306. The port of container
+    character set server: 'utf8' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
+    collation server: 'utf8_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
+    mysql version: '8.0' # Optional, default value is "latest". The version of the MySQL
+    mysql database: 'bank' # Optional, default value is "test". The specified database which will be create
+    # mysql root password: ${{ secrets.RootPassword }} # Required if "mysql user" is empty, default is empty. The root superuser password
+    mysql user: ${{ secrets.MYSQL_USER }} # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
+    mysql password: ${{ secrets.MYSQL_PASSWORD }} # Required if "mysql user" exists. The password for the "mysql user"
+
 
 jobs:
   
@@ -58,13 +72,6 @@ jobs:
           name: saving to txt
           path: save.txt
       
-      - name: Install MySQL client
-        run: sudo apt-get install -y mysql-client
-
-      - name: Connect to MySQL
-        run: mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD -P $MYSQL_PORT -D $MYSQL_DATABASE -e "SELECT * FROM gtu_notofication"
-
-
       - name : run gtu notification
         env:
           SMTP_RECEIVER_EMAIL : ${{secrets.SMTP_RECEIVER_EMAIL}}
