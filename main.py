@@ -19,8 +19,9 @@ print(MYSQL_USER)
 print(MYSQL_PASSWORD)
 # Connect to the MySQL database
 cnx = mysql.connector.connect(
-  host='127.0.0.1
-
+  host='127.0.0.1',
+  user=MYSQL_USER,
+  password=MYSQL_PASSWORD,
   database='bank'
 )
 
