@@ -61,9 +61,8 @@ jobs:
           MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
           MYSQL_USER: ${{ secrets.MYSQL_USER }}
           MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-          MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
         run: |
-          mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE -e "SELECT * FROM gtu_notofication;"
+          mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD 
           
 
       - name : run gtu notification

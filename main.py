@@ -14,14 +14,13 @@ import mysql.connector
 MYSQL_HOST = os.environ['MYSQL_HOST']
 MYSQL_USER = os.environ['MYSQL_USER']
 MYSQL_PASSWORD = os.environ['MYSQL_PASSWORD']
-MYSQL_DATABASE = os.environ['MYSQL_DATABASE']
 
 # Connect to the MySQL database
 cnx = mysql.connector.connect(
   host=MYSQL_HOST,
   user=MYSQL_USER,
   password=MYSQL_PASSWORD,
-  database=MYSQL_DATABASE
+  database='bank'
 )
 
 # Create a cursor object to execute SQL queries
