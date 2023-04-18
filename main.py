@@ -11,10 +11,12 @@ import mysql.connector
 
 
 # Get MySQL credentials from environment variables
-MYSQL_HOST = os.environ['MYSQL_HOST']
-MYSQL_USER = os.environ['MYSQL_USER']
-MYSQL_PASSWORD = os.environ['MYSQL_PASSWORD']
-
+MYSQL_HOST = os.environ.get('MYSQL_HOST')
+MYSQL_USER = os.environ.get('MYSQL_USER')
+MYSQL_PASSWORD = os.environ.get('MYSQL_PASSWORD')
+print(MYSQL_HOST)
+print(MYSQL_USER)
+print(MYSQL_PASSWORD)
 # Connect to the MySQL database
 cnx = mysql.connector.connect(
   host='3306',
