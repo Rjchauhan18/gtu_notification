@@ -11,9 +11,9 @@ from email.mime.text import MIMEText
 def sendemail(date,Notification, link):
   # Define email addresses to use
     
-    sender_email =os.environ.get('SMTP_SENDER_EMAIL')#sender email
-    smtp_pass = os.environ.get('SMTP_PASSWORD')# app generated password
-    receiver_email = os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
+    sender_email = 'targetearn2022@gmail.com'#os.environ.get('SMTP_SENDER_EMAIL')#sender email
+    smtp_pass = 'lpspjhhaxqhbxxvu' #os.environ.get('SMTP_PASSWORD')# app generated password
+    receiver_email = 'rjchauhan5000000@gmail.com' #os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
 
 
     # Define SMTP email server details
@@ -68,7 +68,7 @@ if path.exists("Record"):
     print("path exits")
     with open("Record", 'rb') as f:
             recorded = pickle.load(f)
-            print(recorded)
+            print("Last stored Link :"+recorded)
 
 
 def info():
@@ -79,17 +79,17 @@ def info():
     link= link_tag.get('href')
 
     
-    print(link)
+    print("Current Link :"+link)
     if recorded != link:
         try:
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
-            # print(type(msg))
             sendemail(dt,link_tag.text,link)
             print("Mail sended successfully")
             with open("Record", 'wb') as f:
                 curr = link
                 pickle.dump(curr, f)
                 print("link is Successfully added to code memory")
+           
         except Exception as e:
             print("Error : ")
             print(e)
