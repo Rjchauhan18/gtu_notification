@@ -17,7 +17,7 @@ MYSQL_PASSWORD = os.environ['MYSQL_PASSWORD']
 
 # Connect to the MySQL database
 cnx = mysql.connector.connect(
-  host=MYSQL_HOST,
+  host='3306',
   user=MYSQL_USER,
   password=MYSQL_PASSWORD,
   database='bank'
