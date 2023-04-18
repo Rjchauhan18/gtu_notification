@@ -18,23 +18,23 @@ print(MYSQL_HOST)
 print(MYSQL_USER)
 print(MYSQL_PASSWORD)
 # Connect to the MySQL database
-cnx = mysql.connector.connect(
-  host='127.0.0.1',
-  user=MYSQL_USER,
-  password=MYSQL_PASSWORD,
-  database='bank'
-)
+# cnx = mysql.connector.connect(
+#   host='127.0.0.1',
+#   user=MYSQL_USER,
+#   password=MYSQL_PASSWORD,
+#   database='bank'
+# )
 
 # Create a cursor object to execute SQL queries
-cursor = cnx.cursor()
+# cursor = cnx.cursor()
 
-# Execute a SELECT query
-query = "SELECT * FROM gtu_notofication"
-cursor.execute(query)
+# # Execute a SELECT query
+# query = "SELECT * FROM gtu_notofication"
+# cursor.execute(query)
 
-# Fetch the results and print them
-for result in cursor.fetchall():
-  print(result)
+# # Fetch the results and print them
+# for result in cursor.fetchall():
+#   print(result)
 
 # smtp connection
 def sendemail(date,Notification, link):
