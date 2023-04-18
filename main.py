@@ -84,7 +84,7 @@ def info():
 
     
     print("Current Link :"+link)
-    if t != link:
+    if recorded != link:
         try:
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
             sendemail(dt,link_tag.text,link)
