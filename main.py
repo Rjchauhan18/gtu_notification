@@ -57,11 +57,6 @@ h3_tag=html.find("h3",{"class":"d-block"})
 
 #memory of code 
 
-# reading_file = open("save.txt", "r")
-
-# t=reading_file.read()
-
-# print(t)
 
 class Record:
 
@@ -89,10 +84,7 @@ def info():
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
             sendemail(dt,link_tag.text,link)
             print("Mail sended successfully")
-
-            writitng_file = open("save.txt","w")
             
-            writitng_file.write(link)
             with open("Record", 'wb') as f:
                 pickle.dump(link, f)
                 print("link is Successfully added to code memory")
