@@ -43,5 +43,5 @@ jobs:
           SMTP_RECEIVER_EMAIL : ${{secrets.SMTP_RECEIVER_EMAIL}}
           SMTP_SENDER_EMAIL: ${{secrets.SMTP_SENDER_EMAIL}}
           SMTP_PASSWORD: ${{secrets.SMTP_PASSWORD}}
-        run: python https://github.com/Rjchauhan18/gtu_notification/blob/main/main.py
+        run: python main.py
       
