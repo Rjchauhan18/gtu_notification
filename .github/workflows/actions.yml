@@ -30,7 +30,7 @@ jobs:
       - name: install python packages
         run: |
           python -m pip install --upgrade pip
-          RUN pip freeze > requirements.txt
+          pip freeze > requirements.txt
           # pip install -r requirements.txt
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
@@ -43,5 +43,5 @@ jobs:
           SMTP_RECEIVER_EMAIL : ${{secrets.SMTP_RECEIVER_EMAIL}}
           SMTP_SENDER_EMAIL: ${{secrets.SMTP_SENDER_EMAIL}}
           SMTP_PASSWORD: ${{secrets.SMTP_PASSWORD}}
-        run: pip freeze > python main.py
+        run: python https://github.com/Rjchauhan18/gtu_notification/blob/main/main.py
       
