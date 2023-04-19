@@ -30,7 +30,7 @@ jobs:
       - name: install python packages
         run: |
           python -m pip install --upgrade pip
-          pip freeze > requirements.txt
+          RUN pip freeze > requirements.txt
           # pip install -r requirements.txt
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
