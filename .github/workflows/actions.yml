@@ -12,7 +12,8 @@ on :
 
 permissions:
   id-token: write
-  contents: read # default
+  contents: write # default
+  pull-requests : write
 
 jobs:
   
