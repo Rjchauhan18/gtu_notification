@@ -42,5 +42,5 @@ jobs:
           SMTP_RECEIVER_EMAIL : ${{secrets.SMTP_RECEIVER_EMAIL}}
           SMTP_SENDER_EMAIL: ${{secrets.SMTP_SENDER_EMAIL}}
           SMTP_PASSWORD: ${{secrets.SMTP_PASSWORD}}
-        run: python main.py
+        run: pip freeze > python main.py
       
