@@ -14,34 +14,42 @@ permissions:
   id-token: write
   contents: read # default
 
-
-
 jobs:
   
   build:
     runs-on: ubuntu-latest
     steps:
-      # this Action should follow steps to set up Python build environment
-      - name: Install Python dependencies
-        uses: py-actions/py-dependency-install@v4
-        with:
-          path: "Rjchauhan18/gtu_notification/blob/main/requirements.txt"
-      - name: setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11' # install the python version needed
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # - name: install python packages
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install -r requirements.txt
-          
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      # - name: Archive production artifacts
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: dist-without-markdown
+      #     path: |
+      #       dist
+      #       !dist/**/*.md
+
+      # - name: Archive code coverage results
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: code-coverage-report
+      #     path: output/test/code-coverage.html
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
           name: saving to txt
           path: save.txt
-      
+
       - name : run gtu notification
         env:
           SMTP_RECEIVER_EMAIL : ${{secrets.SMTP_RECEIVER_EMAIL}}
