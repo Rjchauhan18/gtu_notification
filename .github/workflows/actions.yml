@@ -21,15 +21,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # this Action should follow steps to set up Python build environment
+      - name: Install Python dependencies
+        uses: py-actions/py-dependency-install@v4
+        with:
+          path: "https://github.com/Rjchauhan18/gtu_notification/blob/aaa0b64ccd3bb3e4cd3dc2b5e58e786a40dba08f/requirements.txt"
       - name: setup python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11' # install the python version needed
 
-      - name: install python packages
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      # - name: install python packages
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     pip install -r requirements.txt
           
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
