@@ -1,6 +1,10 @@
 name : run-python-file
 
-on :  [push]
+on :
+  push:
+    branches:
+      - main
+      - dev
   schedule:
 
     - cron: '0 */2 * * *' # “At   0 */2 * * * =======>>>>>>> At minute 0 past every 2nd hour..”
@@ -8,31 +12,43 @@ on :  [push]
 
 permissions:
   id-token: write
-  contents: read # default
+  contents: write # default
+  pull-requests : write
 
 jobs:
-  format-code:
-    
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v3
-        - name: Set up python
-          uses: actions/setup-python@v2
-          with:
-            python-version: 3.11
-        - name: install python packages
-          run: |
-            python -m pip install --upgrade pip
-            pip install -r requirements.txt
-        - name : run gtu notification
+  
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-          env:
-            SMTP_RECEIVER_EMAIL : ${{secrets.SMTP_RECEIVER_EMAIL}}
-            SMTP_SENDER_EMAIL: ${{secrets.SMTP_SENDER_EMAIL}}
-            SMTP_PASSWORD: ${{secrets.SMTP_PASSWORD}}
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
 
-          run: python main.py
-        - uses: stefanzweifel/git-auto-commit-action@v4
-        
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+ 
+      - name : run gtu notification
+        env:
+          SMTP_RECEIVER_EMAIL : ${{secrets.SMTP_RECEIVER_EMAIL}}
+          SMTP_SENDER_EMAIL: ${{secrets.SMTP_SENDER_EMAIL}}
+          SMTP_PASSWORD: ${{secrets.SMTP_PASSWORD}}
+        run: python main.py
+      
+      - name: commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff-index --quiet HEAD || (git commit -a -m "updated files" --allow-empty)
+      - name: push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main 
+      
