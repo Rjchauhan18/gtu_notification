@@ -45,11 +45,11 @@ jobs:
       #   with:
       #     name: code-coverage-report
       #     path: output/test/code-coverage.html
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
-        with:
-          name: saving to txt
-          path: save.txt
+      # - name: 'Upload Artifact'
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: saving to txt
+      #     path: save.txt
 
       - name : run gtu notification
         env:
