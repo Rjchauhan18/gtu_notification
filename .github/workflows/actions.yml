@@ -1,4 +1,4 @@
-name : run-python-file
+name : GTU-NOTIFICATION
 
 on :
   push:
