@@ -50,6 +50,7 @@ def sendemail(date,Notification, link,receivers_email):
 
 
 for receiver in receivers :
+  print(receiver)
   sendemail('date','Notification', 'link',receiver)
     
 r = requests.get("https://www.gtu.ac.in/Circular.aspx")
