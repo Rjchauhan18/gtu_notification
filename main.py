@@ -9,14 +9,14 @@ from email.mime.text import MIMEText
 
 
 
-receiver_email = os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
+receivers = os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
 print(type(receiver_email))
 # smtp connection
-def sendemail(date,Notification, link):
+def sendemail(date,Notification, link,receivers_email):
   # Define email addresses to use
     sender_email = os.environ.get('SMTP_SENDER_EMAIL')#sender email
     smtp_pass =os.environ.get('SMTP_PASSWORD')# app generated password
-    receiver_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
+    receiver_email =receivers_email#os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
 
 
     # Define SMTP email server details
@@ -49,7 +49,9 @@ def sendemail(date,Notification, link):
     s.quit()
 
 
-
+for receiver in receivers :
+  sendemail('date','Notification', 'link',receiver)
+    
 r = requests.get("https://www.gtu.ac.in/Circular.aspx")
 
 try:
@@ -103,6 +105,6 @@ def info():
 
 
 
-if __name__ == "__main__":
-    info()
+# if __name__ == "__main__":
+#     info()
 
