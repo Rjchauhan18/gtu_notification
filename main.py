@@ -10,7 +10,7 @@ from email.mime.text import MIMEText
 
 
 receiver_email = os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
-print(receiver_email)
+print(type(receiver_email))
 # smtp connection
 def sendemail(date,Notification, link):
   # Define email addresses to use
