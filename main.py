@@ -9,8 +9,6 @@ from email.mime.text import MIMEText
 
 
 
-receivers = os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
-# print(type(receiver_email))
 # smtp connection
 def sendemail(date,Notification, link,receivers_email):
   # Define email addresses to use
@@ -49,9 +47,9 @@ def sendemail(date,Notification, link,receivers_email):
     s.quit()
 
 
-for receiver in receivers :
-  print(receiver)
-  sendemail('date','Notification', 'link',receiver)
+# for receiver in receivers :
+#   print(receiver)
+#   sendemail('date','Notification', 'link',receiver)
     
 r = requests.get("https://www.gtu.ac.in/Circular.aspx")
 
@@ -106,6 +104,6 @@ def info():
 
 
 
-# if __name__ == "__main__":
-#     info()
+if __name__ == "__main__":
+    info()
 
