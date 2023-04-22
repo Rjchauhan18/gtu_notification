@@ -56,9 +56,6 @@ h3_tag=html.find("h3",{"class":"d-block"})
 #memory of code 
 
 l = os.environ.get('EMAIL_LIST')
-L = list(l)
-for list in L:
-    print(list)
 class Record:
 
     target = 'Last_notification'
@@ -72,13 +69,16 @@ if path.exists("Record"):
 
 
 r = "rrr,rahulchauhan"
+
 print(r)
 
 def Convert(string):
     li = list(string.split(","))
     return li
 NN=Convert(r)
+L = Convert(l)
 print(NN)
+print(L)
 
 def info():
 
