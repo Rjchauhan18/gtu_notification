@@ -73,10 +73,6 @@ if path.exists("Record"):
     with open("Record", 'rb') as f:
             recorded = pickle.load(f)
             print("Last stored Link :"+recorded)
-with open("Record", 'wb') as f:
-                pickle.dump('link', f)
-                print("link is Successfully added to code memory")
-           
 
 def info():
 
@@ -107,6 +103,6 @@ def info():
 
 
 
-# if __name__ == "__main__":
-#     info()
+if __name__ == "__main__":
+    info()
 
