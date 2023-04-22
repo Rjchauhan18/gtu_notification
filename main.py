@@ -8,10 +8,11 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 # smtp connection
-def sendemail(date,Notification, link,receivers_email):
+def Sendemail(date,Notification, link,receivers_email):
   # Define email addresses to use
     sender_email = os.environ.get('SMTP_SENDER_EMAIL')#sender email
     smtp_pass = os.environ.get('SMTP_PASSWORD')# app generated password
+    # print(receivers_email)
     # receivers_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
 
 
@@ -24,7 +25,6 @@ def sendemail(date,Notification, link,receivers_email):
     msg['From'] = sender_email
     msg['Subject'] = 'Latest GTU Notification'
 
-        
     # Create the body of the message (a plain-text and an HTML version).
     html = (date + '\n'+Notification+ '\n'+link)
 
@@ -33,7 +33,6 @@ def sendemail(date,Notification, link,receivers_email):
     part1 = MIMEText(html, 'html')
 
     msg.attach(part1)
-
 
     # Send the message via an SMTP server
     s = smtplib.SMTP(smtp_server,587)
@@ -75,7 +74,7 @@ file = open("notification.txt","a+")
 file.seek(0)
 email_list = file.readlines()
 
-
+print(email_list)
 def info():
 
     #date
@@ -90,7 +89,7 @@ def info():
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
             for email in email_list:
                 print(email)
-                sendemail(dt,link_tag.text,link,email)
+                Sendemail(dt,link_tag.text,link,email)
                 print("Mail sended successfully")
             
             with open("Record", 'wb') as f:
@@ -107,5 +106,6 @@ def info():
 
 
 
-# if __name__ == "__main__":
-#     info()
+if __name__ == "__main__":
+    info()
+
