@@ -93,8 +93,8 @@ print(r)
 def Convert(string):
     li = list(string.split(","))
     return li
-NN=Convert(r)
-print(NN)
+# NN=Convert(r)
+# print(NN)
 
 def info():
 
