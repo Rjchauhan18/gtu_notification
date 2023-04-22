@@ -55,7 +55,7 @@ h3_tag=html.find("h3",{"class":"d-block"})
 
 #memory of code 
 
-l = os.environ.get('EMAIL_LIST')
+l =os.environ.get('EMAIL_LIST')
 class Record:
 
     target = 'Last_notification'
@@ -68,18 +68,11 @@ if path.exists("Record"):
             print("Last stored Link :"+recorded)
 
 
-r = "rrr,rahulchauhan"
-
-print(r)
-
 def Convert(string):
     li = list(string.split(","))
     return li
-NN=Convert(r)
-L = Convert(l)
-print(NN)
-print(L)
 
+L = Convert(l)
 def info():
 
     #date
@@ -92,10 +85,9 @@ def info():
     if recorded != link:
         try:
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
-            # for email in email_list:
-            #     print(email)
-            #     Sendemail(dt,link_tag.text,link,email)
-            #     print("Mail sended successfully")
+            for email in L:
+                Sendemail(dt,link_tag.text,link,email)
+                print("Mail sended successfully")
             
             with open("Record", 'wb') as f:
                 pickle.dump(link, f)
@@ -111,5 +103,10 @@ def info():
 
 
 
-# if __name__ == "__main__":
-#     info()
+if __name__ == "__main__":
+    info()
+
+    # with open("Record", 'wb') as f:
+    #     pickle.dump('link', f)
+    #     print("link is Successfully added to code memory")
+           
