@@ -6,7 +6,6 @@ import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from dotenv import load_dotenv
 # smtp connection
 def Sendemail(date,Notification, link,receivers_email):
   # Define email addresses to use
@@ -70,21 +69,6 @@ if path.exists("Record"):
     with open("Record", 'rb') as f:
             recorded = pickle.load(f)
             print("Last stored Link :"+recorded)
-load_dotenv()
-
-# e = os.getenv("email")
-# print(e)
-
-# if path.exists("notification.txt"):
-#     # receivers email
-#     file = open("notification.txt","a+")
-#     file.seek(0)
-#     email_list = file.readlines()
-#     print(email_list)
-# else:
-#     print("receivers email file path doesn't exist")
-
-
 
 
 r = "rrr,rahulchauhan"
@@ -93,8 +77,8 @@ print(r)
 def Convert(string):
     li = list(string.split(","))
     return li
-# NN=Convert(r)
-# print(NN)
+NN=Convert(r)
+print(NN)
 
 def info():
 
