@@ -39,6 +39,15 @@ jobs:
           SMTP_PASSWORD: ${{secrets.SMTP_PASSWORD}}
         run: python main.py
       
+      - name: Ensure .npmrc and .env are .gitignored
+        id: gitignore-parser
+        uses: dkershner6/gitignore-parser@v1
+        with:
+            must_deny: '.npmrc,.env'
+      # Will fail if it doesn't deny either, but outputs are also present
+      - name: Print whether .gitignore denies .npmrc and .env
+        run: echo ${{ steps.gitignore-parser.outputs.requirements_met }}
+      
       - name: commit files
         run: |
           git config --local user.email "action@github.com"
