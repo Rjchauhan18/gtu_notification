@@ -8,7 +8,7 @@
 
 ## Author
 
-- [@Rjchauhan18](https://github.com/Rjchauha)
+- [@Rjchauhan18](https://github.com/Rjchauhan18)
 
 ## License
 
