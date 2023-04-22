@@ -34,6 +34,7 @@ jobs:
           pip install -r requirements.txt
       - name : run gtu notification
         env:
+          EMAIL_LIST : ${{secrets.EMAIL_LIST}}
           SMTP_RECEIVER_EMAIL : ${{secrets.SMTP_RECEIVER_EMAIL}}
           SMTP_SENDER_EMAIL: ${{secrets.SMTP_SENDER_EMAIL}}
           SMTP_PASSWORD: ${{secrets.SMTP_PASSWORD}}
