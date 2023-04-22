@@ -56,7 +56,8 @@ h3_tag=html.find("h3",{"class":"d-block"})
 
 #memory of code 
 
-L = os.environ.get('EMAIL_LIST')
+l = os.environ.get('EMAIL_LIST')
+L = list(l)
 for list in L:
     print(list)
 class Record:
