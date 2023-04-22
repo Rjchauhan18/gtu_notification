@@ -69,17 +69,29 @@ if path.exists("Record"):
             print("Last stored Link :"+recorded)
 load_dotenv()
 
-e = os.getenv("email")
-print(e)
+# e = os.getenv("email")
+# print(e)
 
-if path.exists("notification.txt"):
-    # receivers email
-    file = open("notification.txt","a+")
-    file.seek(0)
-    email_list = file.readlines()
-    print(email_list)
-else:
-    print("receivers email file path doesn't exist")
+# if path.exists("notification.txt"):
+#     # receivers email
+#     file = open("notification.txt","a+")
+#     file.seek(0)
+#     email_list = file.readlines()
+#     print(email_list)
+# else:
+#     print("receivers email file path doesn't exist")
+
+
+
+
+r = "rrr,rahulchauhan"
+print(r)
+
+def Convert(string):
+    li = list(string.split(","))
+    return li
+NN=Convert(r)
+print(NN)
 
 def info():
 
@@ -93,10 +105,10 @@ def info():
     if recorded != link:
         try:
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
-            for email in email_list:
-                print(email)
-                Sendemail(dt,link_tag.text,link,email)
-                print("Mail sended successfully")
+            # for email in email_list:
+            #     print(email)
+            #     Sendemail(dt,link_tag.text,link,email)
+            #     print("Mail sended successfully")
             
             with open("Record", 'wb') as f:
                 pickle.dump(link, f)
