@@ -22,7 +22,7 @@ def sendemail(date,Notification, link):
 
     # Construct email
     msg = MIMEMultipart('alternative')
-    msg['To'] =receiver_email
+    msg['To'] =receivers_email
     msg['From'] = sender_email
     msg['Subject'] = 'Latest GTU Notification'
 
