@@ -80,16 +80,11 @@ if path.exists("Record"):
             recorded = pickle.load(f)
             print("Last stored Link :"+recorded)
 
-<<<<<<< HEAD
-
 # receivers email
 file = open("notification.txt","a+")
 file.seek(0)
 email_list = file.readlines()
 
-
-=======
->>>>>>> cda8c4dce278c8830484bf29bab174cd19d39a10
 def info():
 
     #date
