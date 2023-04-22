@@ -10,11 +10,11 @@ from email.mime.text import MIMEText
 
 
 # smtp connection
-def sendemail(date,Notification, link,receivers_email):
+def sendemail(date,Notification, link):
   # Define email addresses to use
     sender_email = os.environ.get('SMTP_SENDER_EMAIL')#sender email
     smtp_pass =os.environ.get('SMTP_PASSWORD')# app generated password
-#     receiver_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
+    receiver_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
 
 
     # Define SMTP email server details
@@ -86,7 +86,7 @@ def info():
     if recorded != link:
         try:
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
-            sendemail(dt,link_tag.text,link,os.environ.get('SMTP_RECEIVER_EMAIL'))
+            sendemail(dt,link_tag.text,link)
             print("Mail sended successfully")
             
             with open("Record", 'wb') as f:
