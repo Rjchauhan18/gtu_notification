@@ -10,11 +10,11 @@ from email.mime.text import MIMEText
 
 
 # smtp connection
-def sendemail(date,Notification, link):
+def sendemail(date,Notification, link,receivers_email):
   # Define email addresses to use
     sender_email = os.environ.get('SMTP_SENDER_EMAIL')#sender email
     smtp_pass =os.environ.get('SMTP_PASSWORD')# app generated password
-    receivers_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
+#     receivers_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
 
 
     # Define SMTP email server details
@@ -74,6 +74,9 @@ if path.exists("Record"):
             recorded = pickle.load(f)
             print("Last stored Link :"+recorded)
 
+with open("Record", 'wb') as f:
+  pickle.dump('link', f)
+  print("link is Successfully added to code memory")
 def info():
 
     #date
@@ -86,7 +89,7 @@ def info():
     if recorded != link:
         try:
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
-            sendemail(dt,link_tag.text,link)
+            sendemail(dt,link_tag.text,link,os.environ.get('SMTP_RECEIVER_EMAIL'))
             print("Mail sended successfully")
             
             with open("Record", 'wb') as f:
@@ -103,6 +106,6 @@ def info():
 
 
 
-if __name__ == "__main__":
-    info()
+# if __name__ == "__main__":
+#     info()
 
