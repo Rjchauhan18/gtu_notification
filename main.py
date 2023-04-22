@@ -106,7 +106,4 @@ def info():
 if __name__ == "__main__":
     info()
 
-    # with open("Record", 'wb') as f:
-    #     pickle.dump('link', f)
-    #     print("link is Successfully added to code memory")
            
