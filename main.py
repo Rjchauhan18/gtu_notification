@@ -56,7 +56,9 @@ h3_tag=html.find("h3",{"class":"d-block"})
 
 #memory of code 
 
-
+L = os.environ.get('EMAIL_LIST')
+for list in L:
+    print(list)
 class Record:
 
     target = 'Last_notification'
