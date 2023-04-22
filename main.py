@@ -68,13 +68,15 @@ if path.exists("Record"):
             recorded = pickle.load(f)
             print("Last stored Link :"+recorded)
 
+if path.exists("notification.txt"):
+    # receivers email
+    file = open("notification.txt","a+")
+    file.seek(0)
+    email_list = file.readlines()
+    print(email_list)
+else:
+    print("receivers email file path doesn't exist")
 
-# receivers email
-file = open("notification.txt","a+")
-file.seek(0)
-email_list = file.readlines()
-
-print(email_list)
 def info():
 
     #date
@@ -106,5 +108,5 @@ def info():
 
 
 
-if __name__ == "__main__":
-    info()
+# if __name__ == "__main__":
+#     info()
