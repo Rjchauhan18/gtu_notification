@@ -1,4 +1,4 @@
-name : run-python-file
+name : GTU-NOTIFICATION
 
 on :
   push:
@@ -49,4 +49,9 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+<<<<<<< HEAD
           branch: main 
+=======
+          branch: main 
+      
+>>>>>>> cda8c4dce278c8830484bf29bab174cd19d39a10

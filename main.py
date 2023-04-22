@@ -7,12 +7,20 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+
+
 # smtp connection
 def sendemail(date,Notification, link,receivers_email):
   # Define email addresses to use
+<<<<<<< HEAD
     sender_email ='targetearn2022@gmail.com' #os.environ.get('SMTP_SENDER_EMAIL')#sender email
     smtp_pass = 'lpspjhhaxqhbxxvu' #os.environ.get('SMTP_PASSWORD')# app generated password
     # receivers_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
+=======
+    sender_email = os.environ.get('SMTP_SENDER_EMAIL')#sender email
+    smtp_pass =os.environ.get('SMTP_PASSWORD')# app generated password
+#     receivers_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
+>>>>>>> cda8c4dce278c8830484bf29bab174cd19d39a10
 
 
     # Define SMTP email server details
@@ -45,7 +53,10 @@ def sendemail(date,Notification, link,receivers_email):
     s.quit()
 
 
-
+# for receiver in receivers :
+#   print(receiver)
+#   sendemail('date','Notification', 'link',receiver)
+    
 r = requests.get("https://www.gtu.ac.in/Circular.aspx")
 
 try:
@@ -69,6 +80,7 @@ if path.exists("Record"):
             recorded = pickle.load(f)
             print("Last stored Link :"+recorded)
 
+<<<<<<< HEAD
 
 # receivers email
 file = open("notification.txt","a+")
@@ -76,6 +88,8 @@ file.seek(0)
 email_list = file.readlines()
 
 
+=======
+>>>>>>> cda8c4dce278c8830484bf29bab174cd19d39a10
 def info():
 
     #date
@@ -88,10 +102,15 @@ def info():
     if recorded != link:
         try:
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
+<<<<<<< HEAD
             for email in email_list:
                 print(email)
                 sendemail(dt,link_tag.text,link,email)
                 print("Mail sended successfully")
+=======
+            sendemail(dt,link_tag.text,link,os.environ.get('SMTP_RECEIVER_EMAIL'))
+            print("Mail sended successfully")
+>>>>>>> cda8c4dce278c8830484bf29bab174cd19d39a10
             
             with open("Record", 'wb') as f:
                 pickle.dump(link, f)
