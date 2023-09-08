@@ -6,6 +6,8 @@ import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
+
 # smtp connection
 def Sendemail(date,Notification, link,receivers_email):
   # Define email addresses to use
