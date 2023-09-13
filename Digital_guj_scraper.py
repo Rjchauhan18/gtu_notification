@@ -4,8 +4,8 @@ from bs4 import BeautifulSoup
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import pickle
-# mylist = ['a', 'b', 'c', 'd']
+
+
 def information():
     r= requests.get("https://www.digitalgujarat.gov.in/loginapp/CitizenLogin.aspx")
     html = BeautifulSoup(r.text,'html.parser')
