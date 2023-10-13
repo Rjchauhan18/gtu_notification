@@ -41,7 +41,7 @@
     git push origin feature-name
     ```
 
-5. **Submit a Pull Request (PR)**: Submit a PR to the `main` branch of the ASPDC repository. Be sure to describe the changes you've made and reference any related issues.
+5. **Submit a Pull Request (PR)**: Submit a PR to the `main` branch of the repository. Be sure to describe the changes you've made and reference any related issues.
 
 6. **Review and Discuss**: Our team will review your PR, and discussions or additional changes may be requested.
 
