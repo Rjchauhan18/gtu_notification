@@ -1,3 +1,4 @@
+
 # GTU-NOTIFICATION
 
 [![GTU-NOTIFICATION](https://github.com/Rjchauhan18/gtu_notification/actions/workflows/actions.yml/badge.svg)](https://github.com/Rjchauhan18/gtu_notification/actions/workflows/actions.yml)
@@ -47,7 +48,42 @@ To set up and use this project locally, follow these steps:
    }
    ```
 
-4. **Run the Program:**
+4. **SMTP Setup:**
+
+   This program utilizes SMTP for sending emails. Follow the steps below to set up SMTP and obtain an App Password if needed.
+
+   - **Configure SMTP Settings:**
+     Open the `config.py` file and provide the required SMTP configuration parameters.
+
+     ```python
+     # config.py
+
+     SMTP_CONFIG = {
+         'smtp_host': 'your-smtp-host',
+         'smtp_port': 587,  # or your SMTP port
+         'smtp_secure': False,  # set to True if using SSL
+     }
+     ```
+
+   - **Get App Password for SMTP:**
+     If you are using services like Gmail, you may need to generate an "App Password" for secure authentication.
+     
+     - **For Gmail:**
+       1. Go to your [Google Account](https://myaccount.google.com/).
+       2. Navigate to the "Security" section.
+       3. Under "Signing in to Google," select "App passwords."
+       4. Generate a new App Password for your application.
+
+     Replace `'your-smtp-host'` in `config.py` with the appropriate SMTP host and update other configurations accordingly.
+
+   - **Save Changes and Restart:**
+     Save the changes to the `config.py` file and restart the application.
+
+     ```bash
+     python main.py
+     ```
+
+5. **Run the Program:**
    ```bash
    python main.py
    ```
