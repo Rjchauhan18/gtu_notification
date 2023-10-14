@@ -14,6 +14,16 @@
 
 - [@Rjchauhan18](https://github.com/Rjchauhan18)
 
+## 👥 Contributors
+
+<div align="center">
+  <a href="https://github.com/Rjchauhan18/gtu_notification/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=Rjchauhan18/gtu_notification&max=400&columns=10" style="margin: 5px;" />
+  </a>
+  <p>Join our community and become a contributor today! 🚀 </p>
+</div>
+
+
 ## License
 
 [MIT LICENSE](LICENSE)
