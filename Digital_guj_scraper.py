@@ -1,6 +1,52 @@
 import requests
 import json
 from bs4 import BeautifulSoup
+import os
+from os import path
+import pickle
+from bs4 import BeautifulSoup 
+import requests
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from datetime import date
+
+
+# smtp connection
+def Sendemail(date,Notification, link,receivers_email):
+  # Define email addresses to use
+    sender_email = os.environ.get('SMTP_SENDER_EMAIL')#sender email
+    smtp_pass = os.environ.get('SMTP_PASSWORD')# app generated password
+    # print(receivers_email)
+    # receivers_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
+
+
+    # Define SMTP email server details
+    smtp_server = 'smtp.gmail.com'
+
+    # Construct email
+    msg = MIMEMultipart('alternative')
+    msg['To'] =receivers_email
+    msg['From'] = sender_email
+    msg['Subject'] = 'Latest GTU Notification'
+
+    # Create the body of the message (a plain-text and an HTML version).
+    html = (date + '\n'+Notification+ '\n'+link)
+
+
+
+    part1 = MIMEText(html, 'html')
+
+    msg.attach(part1)
+
+    # Send the message via an SMTP server
+    s = smtplib.SMTP(smtp_server,587)
+    s.ehlo()
+    s.starttls()
+    s.login(sender_email,smtp_pass)
+    print("successful connected")
+    s.sendmail(sender_email, receivers_email, msg.as_string())
+    s.quit()
 
 # load notifs from json
 def load_notifications(filename):
@@ -47,7 +93,7 @@ for tr_tag in tr_tags:
         link_href = a_tag.get('href', '').strip()
         if link_href:
             # Format the hyperlink in the desired format
-            formatted_link = f"~^\\{link_text}#~!~#{url + link_href}~^\\"
+            formatted_link = f"<a href='{url + link_href}'>{link_text}</a>"
             formatted_content.append(formatted_link)
         else:
             # If no href attribute, add plain text to the formatted content list
@@ -70,11 +116,9 @@ save_notifications(existing_notifications, filename)
 # email
 if new_notifications:
     new_notifications_text = '\n'.join(new_notifications)
-    print(f"Sending email for new notifications:\n{new_notifications_text}")
+    # print(f"Sending email for new notifications:\n{new_notifications_text}")
+    receivers_email="ENTER RECIEVER MAIL ID"
+    today = date.today()
+    Sendemail(today, new_notifications_text, url,receivers_email)
 else:
     print("No new notifications to send.")
-
-# printing all notifs
-print()
-print("All Notifications:")
-print(existing_notifications)
