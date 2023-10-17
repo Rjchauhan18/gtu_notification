@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 url = 'https://www.digitalgujarat.gov.in/loginapp/CitizenLogin.aspx'
 response = requests.get(url)
 
-
 soup = BeautifulSoup(response.content, 'html.parser')
 
 tr_tags = soup.find_all('tr')
@@ -21,24 +20,19 @@ for tr_tag in tr_tags:
         if span_tag:
             # Find all <a> tags inside the <span> tag
             a_tags = span_tag.find_all('a')
-            # Check if there are at least 2 <a> tags
-            if len(a_tags) >= 2:
-                # Extract text from the 2nd <a> tag
-                text = a_tags[1].text.strip()
-                # Get the href attribute if it exists, otherwise set it to an empty string
-                href = a_tags[1].get('href', '').strip()
-                # Initialize an empty string to store the formatted text and links
-                formatted_text = f"~^\\{text}#~!~#{url + href}~^\\"
-                # Loop through subsequent <a> tags and concatenate their text and links in the desired format
-                for a_tag in a_tags[2:]:
-                    link_text = a_tag.text.strip()
-                    # Get the href attribute if it exists, otherwise set it to an empty string
-                    link_href = a_tag.get('href', '').strip()
-                    if link_href:
-                        # Format the hyperlink in the desired format
-                        formatted_link = f"~^\\{link_text}#~!~#{url + link_href}~^\\"
-                    else:
-                        formatted_link = f"~^\\{link_text}#~!~#~^\\"
-                    # Concatenate formatted text and links
-                    formatted_text += formatted_link
-                print(formatted_text)
+            # Initialize an empty list to store formatted text and links
+            formatted_content = []
+            # Loop through <a> tags and add text or formatted links based on presence of href attribute
+            for a_tag in a_tags:
+                link_text = a_tag.text.strip()
+                link_href = a_tag.get('href', '').strip()
+                if link_href:
+                    # Format the hyperlink in the desired format
+                    formatted_link = f"~^\\{link_text}#~!~#{url + link_href}~^\\"
+                    formatted_content.append(formatted_link)
+                else:
+                    # If no href attribute, add plain text to the formatted content list
+                    formatted_content.append(link_text)
+            # Join the formatted content list and print
+            formatted_text = ' '.join(formatted_content)
+            print(formatted_text)
