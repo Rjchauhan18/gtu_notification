@@ -7,6 +7,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+NO_OF_NOTIFICATION_TO_BE_CHECKED = 3
 
 # smtp connection
 def Sendemail(date,Notification, link,receivers_email):
@@ -53,8 +54,6 @@ try:
 except Exception as e:
     print(e)
 
-h3_tag=html.find("h3",{"class":"d-block"})
-
 #memory of code 
 
 l =os.environ.get('EMAIL_LIST')
@@ -78,28 +77,38 @@ L = Convert(l)
 def info():
 
     #date
-    dt = (html.find("p",{"id":"ContentPlaceHolder1_lvCircular_lblUploadDate_0"})).text
-    link_tag=h3_tag.find("a",{"target" :"_blank"},href=True)
-    link= link_tag.get('href')
-
+    notificationToBeAddedFrom = NO_OF_NOTIFICATION_TO_BE_CHECKED
+    for index in range(NO_OF_NOTIFICATION_TO_BE_CHECKED,0,-1):
+        h3_tag = html.find("p",{"id":"ContentPlaceHolder1_lvCircular_lblUploadDate_" + str(index - 1)}).parent.find("h3",{"class":"d-block"})
+        dt = (html.find("p",{"id":"ContentPlaceHolder1_lvCircular_lblUploadDate_" + str(index - 1)})).text
+        link_tag=h3_tag.find("a",{"target" :"_blank"},href=True)
+        link= link_tag.get('href')
+        if(link==recorded): # if link matches to already recorded, from here on all notifications are new
+            notificationToBeAddedFrom = index - 1
+            break
     
-    print("Current Link :"+link)
-    if recorded != link:
-        try:
-            # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
-            for email in L:
-                Sendemail(dt,link_tag.text,link,email)
-                print("Mail sended successfully")
-            
-            with open("Record", 'wb') as f:
-                pickle.dump(link, f)
-                print("link is Successfully added to code memory")
-           
-        except Exception as e:
-            print("Error : ")
-            print(e)
-        
-        
+    if(notificationToBeAddedFrom != 0):
+        print("No of new notifications came -  " + str(notificationToBeAddedFrom))
+        for index in range(notificationToBeAddedFrom,0,-1):
+            h3_tag = html.find("p",{"id":"ContentPlaceHolder1_lvCircular_lblUploadDate_" + str(index - 1)}).parent.find("h3",{"class":"d-block"})
+            dt = (html.find("p",{"id":"ContentPlaceHolder1_lvCircular_lblUploadDate_" + str(index - 1)})).text
+            link_tag=h3_tag.find("a",{"target" :"_blank"},href=True)
+            link= link_tag.get('href')
+            print("Current Link :"+link)
+            if recorded != link:
+                try:
+                    # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
+                    for email in L:
+                        Sendemail(dt,link_tag.text,link,email)
+                        print("Mail sended successfully")
+                    
+                    with open("Record", 'wb') as f:
+                        pickle.dump(link, f)
+                        print("link is Successfully added to code memory")
+                
+                except Exception as e:
+                    print("Error : ")
+                    print(e)
     else:
         print("No latest notification")
 
