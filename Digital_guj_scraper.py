@@ -13,12 +13,11 @@ from datetime import date
 
 
 # smtp connection
-def Sendemail(date,Notification, link,receivers_email):
+def Sendemail(date,Notification, link):
   # Define email addresses to use
-    sender_email = os.environ.get('SMTP_SENDER_EMAIL')#sender email
+    sender_email =os.environ.get('SMTP_SENDER_EMAIL')#sender email
     smtp_pass = os.environ.get('SMTP_PASSWORD')# app generated password
-    # print(receivers_email)
-    # receivers_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
+    receivers_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
 
 
     # Define SMTP email server details
@@ -31,7 +30,7 @@ def Sendemail(date,Notification, link,receivers_email):
     msg['Subject'] = 'Latest GTU Notification'
 
     # Create the body of the message (a plain-text and an HTML version).
-    html = (date + '\n'+Notification+ '\n'+link)
+    html = (str(date) + '\n'+Notification+ '\n'+link)
 
 
 
@@ -90,7 +89,7 @@ if __name__ == '__main__':
                 formatted_content.append(formatted_link)
             else:
                 formatted_content.append(link_text)
-        notification_text = ' '.join(formatted_content)
+        notification_text = '<br><br> '.join(formatted_content)
         
         # Check if the notification is new 
         if notification_text not in existing_notifications:
@@ -105,9 +104,8 @@ if __name__ == '__main__':
     # email
     if new_notifications:
         new_notifications_text = '\n'.join(new_notifications)
-        # print(f"Sending email for new notifications:\n{new_notifications_text}")
-        receivers_email="ENTER RECIEVER MAIL ID"
+        print(f"Sending email for new notifications:\n{new_notifications_text}")
         today = date.today()
-        Sendemail(today, new_notifications_text, url,receivers_email)
+        Sendemail(today, new_notifications_text, url)
     else:
         print("No new notifications to send.")
