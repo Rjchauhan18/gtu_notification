@@ -2,21 +2,21 @@ import requests
 import json
 from bs4 import BeautifulSoup
 import os
-from os import path
-import pickle
 from bs4 import BeautifulSoup 
 import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import date
+from dotenv import load_dotenv
 
 
 # smtp connection
 def Sendemail(date,Notification, link):
+    load_dotenv()
   # Define email addresses to use
     sender_email =os.environ.get('SMTP_SENDER_EMAIL')#sender email
-    smtp_pass = os.environ.get('SMTP_PASSWORD')# app generated password
+    smtp_pass =os.environ.get('SMTP_PASSWORD')# app generated password
     receivers_email =os.environ.get('SMTP_RECEIVER_EMAIL')# receiver email
 
 
@@ -104,7 +104,8 @@ if __name__ == '__main__':
     # email
     if new_notifications:
         new_notifications_text = '\n'.join(new_notifications)
-        print(f"Sending email for new notifications:\n{new_notifications_text}")
+        # print(f"Sending email for new notifications:\n{new_notifications_text}")
+        print(f"Sending email for new notifications...")
         today = date.today()
         Sendemail(today, new_notifications_text, url)
     else:
