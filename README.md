@@ -37,7 +37,8 @@ Create a `.env` file in the project root directory and add the following lines:
 
 ```
 SMTP_SENDER_EMAIL="your sender email"
-SMPT_PASSWORD="Your SMTP app password"
+SMTP_PASSWORD="Your SMTP app password"
+SMTP_RECEIVER_EMAIL="Email ID to recieve information to"
 ```
 
 4. **SMTP Setup:**
