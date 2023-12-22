@@ -8,6 +8,25 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
+# discord connection
+
+def  discord(text , link):
+
+    disc_link= os.environ.get('DISC_LINK')
+    authorization= os.environ.get('AUTHORIZATION')
+
+    notification= text + "\n" + link
+
+    header = {
+        "Authorization" : authorization, 
+    }
+
+    pyload = {
+        "content" : notification,
+    }
+
+    r= requests.post(disc_link, pyload ,headers=header)
+
 # smtp connection
 def Sendemail(date,Notification, link,receivers_email):
   # Define email addresses to use
@@ -89,6 +108,7 @@ def info():
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
             for email in L:
                 Sendemail(dt,link_tag.text,link,email)
+                discord(link_tag.text , link )
                 print("Mail sended successfully")
             
             with open("Record", 'wb') as f:
