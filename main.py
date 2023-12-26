@@ -12,27 +12,36 @@ load_dotenv('.env')
 
 
 # discord connection
+
+class DISCORD:
+
+    DISC_LINK = 'LINK'
+
 authorization= os.environ.get('AUTHORIZATION')
 
 def  discord(text , link):
 
     print(disc_link)
 
+    if path.exists("Record"):
+        # load
 
-    with open('DISCORD','rb') as f:
-        disc_link=pickle.load(f)
+        print("path exits")
+        with open("DISCORD", 'rb') as f:
+                disc_link = pickle.load(f)
 
-    notification= text + "\n" + link
 
-    header = {
-        "Authorization" : authorization, 
-    }
+        notification= text + "\n" + link
 
-    pyload = {
-        "content" : notification,
-    }
+        header = {
+            "Authorization" : authorization, 
+        }
 
-    r= requests.post(disc_link, pyload ,headers=header)
+        pyload = {
+            "content" : notification,
+        }
+
+        r= requests.post(disc_link, pyload ,headers=header)
 
 # smtp connection
 def Sendemail(date,Notification, link,receivers_email):
