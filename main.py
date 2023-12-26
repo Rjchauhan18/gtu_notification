@@ -17,6 +17,7 @@ def  discord(text , link):
 
     disc_link= os.environ.get('DISC_LINK')
     authorization= os.environ.get('AUTHORIZATION')
+    print(disc_link)
 
     notification= text + "\n" + link
 
