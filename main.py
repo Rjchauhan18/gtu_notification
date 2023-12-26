@@ -83,6 +83,7 @@ class Record:
 
 if path.exists("Record"):
     # load
+    
     print("path exits")
     with open("Record", 'rb') as f:
             recorded = pickle.load(f)
