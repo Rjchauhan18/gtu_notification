@@ -12,23 +12,12 @@ load_dotenv('.env')
 
 
 # discord connection
-
-class DISCORD:
-
-    DISC_LINK = 'LINK'
-
+disc_no =os.environ.get('DISC_NO')
+disc_link= 'https://discord.com/api/v9/channels/'+disc_no+'/messages'
 authorization= os.environ.get('AUTHORIZATION')
 
 def  discord(text , link):
 
-    print(disc_link)
-
-    if path.exists("Record"):
-        # load
-
-        print("path exits")
-        with open("DISCORD", 'rb') as f:
-                disc_link = pickle.load(f)
 
 
         notification= text + "\n" + link
