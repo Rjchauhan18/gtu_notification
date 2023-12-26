@@ -6,6 +6,9 @@ import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from dotenv import load_dotenv
+
+load_dotenv('.env')
 
 
 # discord connection
@@ -83,7 +86,7 @@ class Record:
 
 if path.exists("Record"):
     # load
-    
+
     print("path exits")
     with open("Record", 'rb') as f:
             recorded = pickle.load(f)
