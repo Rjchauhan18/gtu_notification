@@ -23,7 +23,7 @@ def  discord(text , link):
         notification= text + "\n" + link
 
         header = {
-            "Authorization" : authorization, 
+            "Authorization" : str(authorization), 
         }
 
         pyload = {
