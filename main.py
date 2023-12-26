@@ -15,7 +15,7 @@ load_dotenv('.env')
 
 def  discord(text , link):
 
-    disc_link= os.environ.get('DISC_LINK')
+    disc_link= os.environ['DISC_LINK']#os.environ.get('DISC_LINK')
     authorization= os.environ.get('AUTHORIZATION')
     print(disc_link)
 
