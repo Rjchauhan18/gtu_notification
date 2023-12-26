@@ -5,6 +5,8 @@ import pickle
 
 load_dotenv('.env')
 
+#This is just the reference and experimental file it is not connected to main.py 
+
 def  discord(text , link):
 
     disc_link= os.environ['DISC_LINK']
