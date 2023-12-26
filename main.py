@@ -12,12 +12,15 @@ load_dotenv('.env')
 
 
 # discord connection
-disc_link= os.environ.get('DISCORD')
 authorization= os.environ.get('AUTHORIZATION')
 
 def  discord(text , link):
 
     print(disc_link)
+
+
+    with open('DISCORD','rb') as f:
+        disc_link=pickle.load(f)
 
     notification= text + "\n" + link
 

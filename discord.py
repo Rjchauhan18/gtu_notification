@@ -1,6 +1,7 @@
 import requests
 import os
 from dotenv import load_dotenv
+import pickle
 
 load_dotenv('.env')
 
@@ -22,4 +23,8 @@ def  discord(text , link):
     r= requests.post(disc_link, pyload ,headers=header)
 
 
-discord('hi', 'there')
+# discord('hi', 'there')
+
+
+with open('DISCORD','rb') as f:
+    r=pickle.load(f)
