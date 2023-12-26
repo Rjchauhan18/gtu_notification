@@ -31,6 +31,7 @@ def  discord(text , link):
         }
 
         r= requests.post(disc_link, pyload ,headers=header)
+        print("sent to Discord!!!!!")
 
 # smtp connection
 def Sendemail(date,Notification, link,receivers_email):
