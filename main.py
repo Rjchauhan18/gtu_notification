@@ -13,7 +13,7 @@ load_dotenv('.env')
 
 # discord connection
 disc_no =os.environ.get('DISC_NO')
-disc_link= 'https://discord.com/api/v9/channels/'+disc_no+'/messages'
+disc_link= 'https://discord.com/api/v9/channels/'+str(disc_no)+'/messages'
 authorization= os.environ.get('AUTHORIZATION')
 
 def  discord(text , link):
