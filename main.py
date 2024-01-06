@@ -126,10 +126,10 @@ def info():
             # msg = (dt + "\n\n"+link_tag.text+ "\n\n"+link + "\n")
             for email in L:
                 Sendemail(dt,link_tag.text,link,email)
-                discord(link_tag.text , link )
                 print("Mail sended successfully")
             
             with open("Record", 'wb') as f:
+                discord(link_tag.text , link )
                 pickle.dump(link, f)
                 print("link is Successfully added to code memory")
            
