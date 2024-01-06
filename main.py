@@ -21,7 +21,7 @@ print(webhook)
 
 def  discord(text , link):
 
-        webhook= 'https://discord.com/api/webhooks/1193211763949314078/' + str(webhook)
+        webhook= 'https://discord.com/api/webhooks/1193211763949314078/r7Ga8eVJQ4AsF1KZjzjFqSsIpg1kNT1ntp9K8Wvejo9DqxQqb0LGI8NrbQKrtaDV2OZm' 
 
         print(type(webhook))
         print(webhook)
