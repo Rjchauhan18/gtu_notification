@@ -18,6 +18,7 @@ authorization= os.environ.get('AUTHORIZATION')
 print(type(authorization))
 print(type(disc_no))
 print(type(disc_link))
+print(disc_link)
 
 def  discord(text , link):
 
@@ -33,7 +34,7 @@ def  discord(text , link):
             "content" : notification,
         }
 
-        r= requests.post(disc_link, pyload ,headers=header)
+        requests.post(disc_link, pyload ,headers=header)
         print("sent to Discord!!!!!")
 
 # smtp connection
