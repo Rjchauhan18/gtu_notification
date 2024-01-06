@@ -6,9 +6,12 @@ import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from dotenv.main import load_dotenv
+load_dotenv()
+
 
 # discord connection
-disc_no =os.environ.get('DISC_NO')
+disc_no =os.getenv('DISC_NO')
 disc_link= 'https://discord.com/api/v9/channels/'+str(disc_no)+'/messages'
 authorization= os.environ.get('AUTHORIZATION')
 print(type(authorization))
@@ -97,6 +100,11 @@ if path.exists("Record"):
             recorded = pickle.load(f)
             print("Last stored Link :"+recorded)
 
+
+with open("Record", 'wb') as f:
+            pickle.dump("code memory", f)
+            # print(" code memory")
+           
 
 def Convert(string):
     li = list(string.split(","))
