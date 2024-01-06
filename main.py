@@ -18,6 +18,7 @@ authorization= os.environ.get('AUTHORIZATION')
 print(type(authorization))
 print(type(disc_no))
 print(type(disc_link))
+print(disc_no)
 print(disc_link)
 
 def  discord(text , link):
