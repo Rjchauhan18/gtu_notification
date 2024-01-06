@@ -9,28 +9,14 @@ from email.mime.text import MIMEText
 from dotenv.main import load_dotenv
 load_dotenv()
 
-# discord connection
-# disc_no =os.environ.get('DISC_NO')
-webhook =os.environ.get('WEBHOOK')
-# disc_link= 'https://discord.com/api/v9/channels/'+str(disc_no)+'/messages'
-# authorization= os.environ.get('AUTHORIZATION')
-# print(type(authorization))
-# print(type(disc_no))
-print(type(webhook))
-print(webhook)
 
 def  discord(text , link):
 
         webhook= 'https://discord.com/api/webhooks/1193211763949314078/r7Ga8eVJQ4AsF1KZjzjFqSsIpg1kNT1ntp9K8Wvejo9DqxQqb0LGI8NrbQKrtaDV2OZm' 
 
-        print(type(webhook))
-        print(webhook)
 
         notification= text + "\n" + link
 
-        # header = {
-        #     "Authorization" : str(authorization), 
-        # }
 
         pyload = {
             "content" : notification,
