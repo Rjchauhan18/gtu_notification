@@ -15,6 +15,9 @@ load_dotenv('.env')
 disc_no =os.environ.get('DISC_NO')
 disc_link= 'https://discord.com/api/v9/channels/'+str(disc_no)+'/messages'
 authorization= os.environ.get('AUTHORIZATION')
+print(type(authorization))
+print(type(disc_no))
+print(type(disc_link))
 
 def  discord(text , link):
 
