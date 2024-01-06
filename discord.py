@@ -1,6 +1,6 @@
 import requests
 import os
-from dotenv import load_dotenv
+from dotenv.main import load_dotenv
 import pickle
 
 load_dotenv('.env')
@@ -9,24 +9,26 @@ load_dotenv('.env')
 
 def  discord(text , link):
 
-    disc_link= os.environ['DISC_LINK']
-    authorization= os.environ.get('AUTHORIZATION')
+    # disc_link= os.environ['DISC_LINK']
+    disc_link= os.environ.get('webhook')
+    # authorization= os.getenv('AUTHORIZATION')
 
     notification= text + "\n" + link
 
-    header = {
-        "Authorization" : authorization, 
-    }
+    # header = {
+    #     "Authorization" : authorization, 
+    # }
 
     pyload = {
         "content" : notification,
     }
 
-    r= requests.post(disc_link, pyload ,headers=header)
+    requests.post(disc_link, pyload )
+    
 
 
-# discord('hi', 'there')
+discord('hi', 'there')
 
 
-with open('DISCORD','rb') as f:
-    r=pickle.load(f)
+# with open('DISCORD','rb') as f:
+#     r=pickle.load(f)

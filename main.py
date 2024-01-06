@@ -9,17 +9,15 @@ from email.mime.text import MIMEText
 from dotenv.main import load_dotenv
 load_dotenv()
 
-
 # discord connection
-disc_no =os.getenv('DISC_NO')
-disc_link= 'https://discord.com/api/v9/channels/'+str(disc_no)+'/messages'
-authorization= os.environ.get('AUTHORIZATION')
-print(type(authorization))
-print(type(disc_no))
-print(type(disc_link))
-print(disc_no)
-print(authorization)
-print(disc_link)
+# disc_no =os.environ.get('DISC_NO')
+webhook =os.environ.get('webhook')
+# disc_link= 'https://discord.com/api/v9/channels/'+str(disc_no)+'/messages'
+# authorization= os.environ.get('AUTHORIZATION')
+# print(type(authorization))
+# print(type(disc_no))
+print(type(webhook))
+print(webhook)
 
 def  discord(text , link):
 
@@ -27,15 +25,15 @@ def  discord(text , link):
 
         notification= text + "\n" + link
 
-        header = {
-            "Authorization" : str(authorization), 
-        }
+        # header = {
+        #     "Authorization" : str(authorization), 
+        # }
 
         pyload = {
             "content" : notification,
         }
 
-        requests.post(disc_link, pyload ,headers=header)
+        requests.post(webhook, pyload )
         print("sent to Discord!!!!!")
 
 # smtp connection
