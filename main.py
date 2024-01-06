@@ -11,7 +11,7 @@ load_dotenv()
 
 # discord connection
 # disc_no =os.environ.get('DISC_NO')
-webhook =os.environ.get('webhook')
+webhook =os.environ.get('WEBHOOK')
 # disc_link= 'https://discord.com/api/v9/channels/'+str(disc_no)+'/messages'
 # authorization= os.environ.get('AUTHORIZATION')
 # print(type(authorization))
@@ -21,7 +21,10 @@ print(webhook)
 
 def  discord(text , link):
 
+        webhook= 'https://discord.com/api/webhooks/1193211763949314078/' + str(webhook)
 
+        print(type(webhook))
+        print(webhook)
 
         notification= text + "\n" + link
 
