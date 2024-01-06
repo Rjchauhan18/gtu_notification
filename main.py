@@ -6,10 +6,6 @@ import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from dotenv import load_dotenv
-
-load_dotenv('.env')
-
 
 # discord connection
 disc_no =os.environ.get('DISC_NO')
