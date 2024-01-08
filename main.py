@@ -88,9 +88,6 @@ if path.exists("Record"):
             print("Last stored Link :"+recorded)
 
 
-with open("Record", 'wb') as f:
-            pickle.dump("code memory", f)
-            # print(" code memory")
            
 
 def Convert(string):
