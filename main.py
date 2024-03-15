@@ -12,7 +12,7 @@ load_dotenv()
 
 def  discord(text , link):
 
-        webhook= 'https://discord.com/api/webhooks/1193211763949314078/r7Ga8eVJQ4AsF1KZjzjFqSsIpg1kNT1ntp9K8Wvejo9DqxQqb0LGI8NrbQKrtaDV2OZm' 
+        webhook= 'https://discord.com/api/webhooks/1218220240203157535/iuaglDFrtrPW_yP1DQhLkK2yLDX7bn72lTzxCaRGNdm8rGFJYdw-ozr9LSgPHS2nLUGj' 
 
 
         notification= text + "\n" + link
