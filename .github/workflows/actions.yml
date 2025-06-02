@@ -1,14 +1,14 @@
 name : GTU-NOTIFICATION
 
 on :
-  push:
-    branches:
-      - main
-      - dev
-  schedule:
+  workflow_dispatch: # For running workflow manually
+  # push:
+  #   branches:
+  #     - main
+  #     - dev
+  # schedule:
 
-    - cron: '0 */2 * * *' # “At   0 */2 * * * =======>>>>>>> At minute 0 past every 2nd hour..”
-  workflow_dispatch:
+  #   - cron: '0 */2 * * *' # “At   0 */2 * * * =======>>>>>>> At minute 0 past every 2nd hour..”
 
 permissions:
   id-token: write
